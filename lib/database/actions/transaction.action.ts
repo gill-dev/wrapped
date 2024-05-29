@@ -2,10 +2,10 @@
 
 import { redirect } from 'next/navigation'
 import Stripe from "stripe";
-import { handleError } from '../utils';
-import { connectToDatabase } from '../database/mongoose';
-import Transaction from '../database/models/transaction.model';
-import { updateCredits } from './user.actions';
+import { handleError } from '@/lib/utils';
+import { connectToDatabase } from '../database';
+import Transaction from '../models/transaction.model';
+import { updateCredits } from '@/lib/actions/user.actions';
 
 export async function checkoutCredits(transaction: CheckoutTransactionParams) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
